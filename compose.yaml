@@ -1,0 +1,22 @@
+services:
+  mc:
+    image: itzg/minecraft-server
+    restart: unless-stopped
+    environment:
+      EULA: "TRUE"
+      TYPE: "FABRIC"
+      VERSION: "1.21.11"
+      MEMORY: "3G"
+      ONLINE_MODE: "false"
+      ENFORCE_SECURE_PROFILE: "false"
+      MODRINTH_PROJECTS: |
+        lithium?
+        ferrite-core?
+        worldedit
+        c2me-fabric?
+        krypton?
+        noisium?
+    volumes:
+      - ./data:/data
+    ports:
+      - "25565:25565"
